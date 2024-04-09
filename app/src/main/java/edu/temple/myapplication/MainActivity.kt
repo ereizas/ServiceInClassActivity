@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.pauseButton).setOnClickListener {
-
+            if(isConnected) timerBinder.pause()
         }
         
         findViewById<Button>(R.id.stopButton).setOnClickListener {
