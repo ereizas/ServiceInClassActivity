@@ -5,7 +5,9 @@ import android.content.Intent
 import android.content.ServiceConnection
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.os.IBinder
+import android.os.Looper
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
@@ -30,8 +32,11 @@ class MainActivity : AppCompatActivity() {
             serviceConnection,
             BIND_AUTO_CREATE
         )
+        val timerHandler = Handler(Looper.getMainLooper()){
+            true
+        }
         findViewById<Button>(R.id.startButton).setOnClickListener {
-            if(isConnected) timerBinder.start(100)
+            if(isConnected) timerBinder.start(100,timerHandler)
         }
 
         findViewById<Button>(R.id.pauseButton).setOnClickListener {
