@@ -42,4 +42,9 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    override fun onDestroy() {
+        unbindService(serviceConnection)
+        super.onDestroy()
+    }
 }
